@@ -57,3 +57,64 @@ def pause():
 pause()
 
 screen.mainloop()
+
+
+
+
+
+#code for the graph
+import matplotlib.pyplot as plt
+import wave
+import numpy as np
+from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg ,NavigationToolbar2Tk )                                     
+from tkinter import *
+
+screen=Tk()
+
+screen.geometry("500x400")
+
+screen.config(bg="salmon")
+
+
+
+#creartion of the plot
+x="/Users/moeezali/Desktop/Sounds/alarm1.wav"
+sound=wave.open(x)
+
+sound_change=sound.readframes(-1)
+sound_change=np.frombuffer(sound_change,dtype="int16")
+
+frames=sound.getframerate()
+
+time=np.linspace(0,len(sound_change)/frames,num=len(sound_change))
+                 
+z=plt.figure(1)
+
+az=plt.axes()
+
+
+#color for bg
+z.set_facecolor("xkcd:salmon")
+z.set_facecolor((1.0,0.47,0.42))
+
+#color for graph
+az.set_facecolor("xkcd:salmon")
+az.set_facecolor((1.0,0.47,0.42))
+y=plt.plot(time,sound_change)
+
+
+
+
+#code to put matlibplot on tkinter
+show=FigureCanvasTkAgg(z,screen)
+show.draw()
+
+tool=NavigationToolbar2Tk(show,screen)
+
+tool.update()
+
+show.get_tk_widget().pack()
+
+
+
+screen.mainloop()
