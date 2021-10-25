@@ -1,35 +1,32 @@
-# Music-Player
-
 #python mp3 player made on tkinter
 
 #contains a libaray button, where users can access and store their music
 #contains a speed increase and decrease button
 #contains a help guide
 #contains a button that will allow user to insert link to uploard sonf with desried name
+#shows the sound wave of each song played
 
 from tkinter import *
-from playsound import playsound 
+from pygame import mixer
+import wave
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg ,NavigationToolbar2Tk ) 
 
 screen=Tk()
 
 screen.geometry("700x500")
 
+mixer.init()
+
 screen.config(bg="light salmon")
 
 title=Label(screen,text="Music Player",bg="light salmon",font=("arial",36)).place(x=250,y=20)
 
-def sound1():
-    pass
-    
-    
-def sound2():
-    pass
-    
-def sound3():
-    pass
-    
 
-Sounds=['1','2','3','4','5','6','7','8','9','10','11','12','13','14']
+sound1="/Users/moeezali/Desktop/Sounds.alarm1.wav"
+
+Sounds=["--","1",'2','3','4','5','6','7','8','9','10','11','12','13','14']
 
 Library=StringVar(screen)
 Library.set(Sounds[0])
@@ -37,28 +34,83 @@ Library.set(Sounds[0])
 Libr=OptionMenu(screen,Library,*Sounds)
 Libr.place(x=325,y=100)
 
-    
+from pygame import mixer
+
+sound1='/Users/moeezali/Desktop/Sounds/alarm1.wav'
+
+mixer.init()
+
+ 
 def play():
     
-    text_play=Library.get()
+    show_play=Label(screen,text="Currently Playing " +Library.get(),bg="light salmon")
+    show_play.place(x=285,y=220)
+
+    soundsz=Button(screen,text="▶",command=play,bg="light salmon")
+    soundsz.place(x=315,y=150)
     
-    show_play=Label(screen,text="Currentely Playing " +text_play,bg="light salmon")
-    show_play.place(x=285,y=190)
-    
-    sounds=Button(screen,text="▶",command=play,bg="light salmon")
-    sounds.place(x=290,y=150)
+    if Library.get()==Sounds[0]:
+        labelz=Label(screen,text='0')
+        labelz.place(x=25,y=400)
+        
+    if Library.get()==Sounds[1]:
+        mixer.music.load(sound1)
+        mixer.music.play()
+          
+    if Library.get()==Sounds[2]:
+        print('two')
+        labelz=Label(screen,text='2')
+        labelz.place(x=25,y=400)
+        
+    if Library.get()==Sounds[3]:
+        print('three')
+        labelz=Label(screen,text='3')
+        labelz.place(x=25,y=400)
+        
+    if Library.get()==Sounds[4]:
+        print('four')
+        labelz=Label(screen,text='4')
+        labelz.place(x=25,y=400)
+        
+    if Library.get()==Sounds[5]:
+        print('five')
+        labelz=Label(screen,text='5')
+        labelz.place(x=25,y=400)
+        
     
 play()
 
 def pause():
-    pause_music=Button(screen,text="■",bg="light salmon")
+    pause_music=Button(screen,text="■",command=pause,bg="light salmon")
     pause_music.place(x=370,y=150)
+    
+    if Library.get() in Sounds:
+        mixer.music.stop()
+        
     
 pause()
 
+def fast_foward():
+    faster_music=Button(screen,text=">>",bg="light salmon")
+    faster_music.place(x=260,y=150)
+    
+fast_foward()
+    
+def slow_down():
+    slower_music=Button(screen,text="<<",bg="light salmon")
+    slower_music.place(x=420,y=150)
+
+slow_down()
+       
+def skip():
+    skip_music=Button(screen,text="(>",bg="light salmon")
+    skip_music.place(x=340,y=180)
+
+skip()
+
+    
+
 screen.mainloop()
-
-
 
 
 
