@@ -91,9 +91,16 @@ def pause():
 pause()
 
 def fast_foward():
-    faster_music=Button(screen,text=">>",bg="light salmon")
+    faster_music=Button(screen,text=">>",bg="light salmon",command=fast_foward)
     faster_music.place(x=260,y=150)
     
+    if Library.get()==Sounds[0]:
+        Library.set(Sounds[1]) 
+   
+       
+    elif Library.get()==Sounds[1]:
+        Library.set(Sounds[2])
+                     
 fast_foward()
     
 def slow_down():
