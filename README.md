@@ -90,6 +90,7 @@ def pause():
     
 pause()
 
+
 def fast_foward():
     faster_music=Button(screen,text=">>",bg="light salmon",command=fast_foward)
     faster_music.place(x=260,y=150)
@@ -97,18 +98,72 @@ def fast_foward():
     if Library.get()==Sounds[0]:
         Library.set(Sounds[1]) 
    
-       
     elif Library.get()==Sounds[1]:
         Library.set(Sounds[2])
+        
+    elif Library.get()==Sounds[2]:
+        Library.set(Sounds[3])
+        
+    elif Library.get()==Sounds[3]:
+        Library.set(Sounds[4])
                      
+    elif Library.get()==Sounds[4]:
+        Library.set(Sounds[5])
+                         
+    elif Library.get()==Sounds[5]:
+        Library.set(Sounds[6])
+                     
+    elif Library.get()==Sounds[6]:
+        Library.set(Sounds[7])
+        
+    elif Library.get()==Sounds[7]:
+        Library.set(Sounds[8])
+        
+    elif Library.get()==Sounds[8]:
+        Library.set(Sounds[9])
+        
+    elif Library.get()==Sounds[9]:
+        Library.set(Sounds[10])
+        
+                    
 fast_foward()
     
 def slow_down():
-    slower_music=Button(screen,text="<<",bg="light salmon")
+    slower_music=Button(screen,text="<<",bg="light salmon",command=slow_down)
     slower_music.place(x=420,y=150)
+    
+    if Library.get()==Sounds[1]:
+        Library.set(Sounds[0]) 
+   
+    elif Library.get()==Sounds[2]:
+        Library.set(Sounds[1])
+        
+    elif Library.get()==Sounds[3]:
+        Library.set(Sounds[2])
+        
+    elif Library.get()==Sounds[4]:
+        Library.set(Sounds[3])
+                     
+    elif Library.get()==Sounds[5]:
+        Library.set(Sounds[4])
+                         
+    elif Library.get()==Sounds[6]:
+        Library.set(Sounds[5])
+                     
+    elif Library.get()==Sounds[7]:
+        Library.set(Sounds[6])
+        
+    elif Library.get()==Sounds[8]:
+        Library.set(Sounds[7])
+        
+    elif Library.get()==Sounds[9]:
+        Library.set(Sounds[8])
+        
+    elif Library.get()==Sounds[10]:
+        Library.set(Sounds[9])    
 
 slow_down()
-       
+
 def skip():
     skip_music=Button(screen,text="(>",bg="light salmon")
     skip_music.place(x=340,y=180)
