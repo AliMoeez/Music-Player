@@ -269,3 +269,19 @@ show.get_tk_widget().pack()
 
 
 screen.mainloop()
+first=(r"C:\Users\Owner\Desktop\Depths.wav")
+
+sound_wave=wave.open(first)
+
+sound_wave_change=sound_wave.readframes(-1)
+sound_wave_change=np.frombuffer(sound_wave_change,dtype="int16")
+
+frame=sound_wave.getframerate()
+
+times=np.linspace(0,len(sound_wave_change)/frame,num=len(sound_wave_change))
+
+plot=plt.figure(1)
+
+plot_ax=plt.axes()
+
+plotz=plt.plot(times,sound_wave_change)
