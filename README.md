@@ -165,8 +165,19 @@ def slow_down():
 slow_down()
 
 def skip():
-    skip_music=Button(screen,text="(>",bg="light salmon")
+    skip_music=Button(screen,text="(>",bg="light salmon",command=skip)
     skip_music.place(x=340,y=180)
+    
+    if Library.get()==Sounds[0]:
+        Library.set(Sounds[1]) 
+   
+    elif skip:
+        choice=random.choice(Sounds)
+        if choice==Sounds[0]:
+            choice=random.choice(Sounds)
+        else:
+            Library.set(choice)
+    
 
 skip()
 
