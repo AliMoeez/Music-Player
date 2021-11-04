@@ -125,6 +125,19 @@ def fast_foward():
     elif Library.get()==Sounds[9]:
         Library.set(Sounds[10])
         
+    elif Library.get()==Sounds[10]:
+        Library.set(Sounds[11])       
+         
+    elif Library.get()==Sounds[11]:
+        Library.set(Sounds[12])
+            
+    elif Library.get()==Sounds[12]:
+        Library.set(Sounds[13])
+        
+         
+    elif Library.get()==Sounds[13]:
+        Library.set(Sounds[14])
+        
                     
 fast_foward()
     
@@ -160,7 +173,20 @@ def slow_down():
         Library.set(Sounds[8])
         
     elif Library.get()==Sounds[10]:
-        Library.set(Sounds[9])    
+        Library.set(Sounds[9]) 
+        
+    elif Library.get()==Sounds[11]:
+        Library.set(Sounds[10]) 
+         
+    elif Library.get()==Sounds[12]:
+        Library.set(Sounds[11]) 
+         
+    elif Library.get()==Sounds[13]:
+        Library.set(Sounds[12])
+         
+    elif Library.get()==Sounds[14]:
+        Library.set(Sounds[13])
+        
 
 slow_down()
 
