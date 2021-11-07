@@ -90,6 +90,26 @@ def pause():
     
 pause()
 
+def graph():
+
+    show_graph=Library.get()
+    
+    show_graph_al=show_graph.readframes(-1)
+    show_graph_a1=np.frombuffer(show_graph_a1,dtpye="int16")
+    
+    frame=show_graph.getframerate()
+    
+    times=np.linspace(0,len(show_graph_al/frame,num=len(show_graph_a1))
+    
+    plot=plt.figure(1)
+                      
+    plot_axes=plt.axes()
+                      
+    plot_graph=plt.plot(times,show_graph_al)
+    
+    
+graph()
+
 
 def fast_foward():
     faster_music=Button(screen,text=">>",bg="light salmon",command=fast_foward)
