@@ -91,23 +91,34 @@ def pause():
 pause()
 
 def graph():
+    
+    sound1=(r"C:\Users\Owner\Desktop\Depths.wav") 
+    
+    show_play=Label(screen,text="Currently Playing " +Library.get(),bg="light salmon")
+    show_play.place(x=285,y=220)
+    
+    if Library.get()==Sounds[0]:
+        show_graph=wave.open(sound1)
+        
+    show_graph_a1=show_graph.readframes(-1)
+    show_graph_a1=np.frombuffer(show_graph_a1,dtype="int16")
 
-    show_graph=Library.get()
-    
-    show_graph_al=show_graph.readframes(-1)
-    show_graph_a1=np.frombuffer(show_graph_a1,dtpye="int16")
-    
     frame=show_graph.getframerate()
     
-    times=np.linspace(0,len(show_graph_al/frame,num=len(show_graph_a1))
+    times=np.linspace(0,len(show_graph_a1)/frame,num=len(show_graph_a1))
+    
     
     plot=plt.figure(1)
-                      
-    plot_axes=plt.axes()
-                      
-    plot_graph=plt.plot(times,show_graph_al)
+        
+    plot_axes=plt.axes()             
+    plot_graph=plt.plot(times,show_graph_a1)
+    show_screen=FigureCanvasTkAgg(plot,screen)
+    show_screen.draw()
+    show_screen.get_tk_widget().place(x=500,y=100)
     
-    
+
+
+        
 graph()
 
 
