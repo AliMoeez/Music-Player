@@ -99,9 +99,6 @@ def play():
     show_screen.get_tk_widget().place(x=500,y=100)
     
 play()
-        
-    
-play()
 
 def pause():
     pause_music=Button(screen,text="■",command=pause,bg="light salmon")
