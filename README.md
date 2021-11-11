@@ -42,10 +42,13 @@ mixer.init()
 
  
 def play():
+
+    sound1=(r"C:\Users\Owner\Desktop\Depths.wav") 
+    sound2=(r"C:\Users\Owner\Desktop\refresh-mountaineer-main-version-01-53-19379.wav")
     
     show_play=Label(screen,text="Currently Playing " +Library.get(),bg="light salmon")
     show_play.place(x=285,y=220)
-
+    
     soundsz=Button(screen,text="▶",command=play,bg="light salmon")
     soundsz.place(x=315,y=150)
     
@@ -56,26 +59,46 @@ def play():
     if Library.get()==Sounds[1]:
         mixer.music.load(sound1)
         mixer.music.play()
+        global show_graph
+        show_graph=wave.open(sound1)
           
     if Library.get()==Sounds[2]:
-        print('two')
-        labelz=Label(screen,text='2')
-        labelz.place(x=25,y=400)
+        mixer.music.load(sound2)
+        mixer.music.play()
+        show_graph=wave.open(sound2)
         
     if Library.get()==Sounds[3]:
-        print('three')
         labelz=Label(screen,text='3')
         labelz.place(x=25,y=400)
         
     if Library.get()==Sounds[4]:
-        print('four')
         labelz=Label(screen,text='4')
         labelz.place(x=25,y=400)
         
     if Library.get()==Sounds[5]:
-        print('five')
         labelz=Label(screen,text='5')
         labelz.place(x=25,y=400)
+        
+    show_play=Label(screen,text="Currently Playing " +Library.get(),bg="light salmon")
+    show_play.place(x=285,y=220)
+    
+
+    show_graph_a1=show_graph.readframes(-1)
+    show_graph_a1=np.frombuffer(show_graph_a1,dtype="int16")
+
+    frame=show_graph.getframerate()
+
+    times=np.linspace(0,len(show_graph_a1)/frame,num=len(show_graph_a1))
+
+    plot=plt.figure(1)
+
+    plot_axes=plt.axes()             
+    plot_graph=plt.plot(times,show_graph_a1)
+    show_screen=FigureCanvasTkAgg(plot,screen)
+    show_screen.draw()
+    show_screen.get_tk_widget().place(x=500,y=100)
+    
+play()
         
     
 play()
@@ -89,38 +112,6 @@ def pause():
         
     
 pause()
-
-def graph():
-    
-    sound1=(r"C:\Users\Owner\Desktop\Depths.wav") 
-    
-    show_play=Label(screen,text="Currently Playing " +Library.get(),bg="light salmon")
-    show_play.place(x=285,y=220)
-    
-    if Library.get()==Sounds[0]:
-        show_graph=wave.open(sound1)
-        
-    show_graph_a1=show_graph.readframes(-1)
-    show_graph_a1=np.frombuffer(show_graph_a1,dtype="int16")
-
-    frame=show_graph.getframerate()
-    
-    times=np.linspace(0,len(show_graph_a1)/frame,num=len(show_graph_a1))
-    
-    
-    plot=plt.figure(1)
-        
-    plot_axes=plt.axes()             
-    plot_graph=plt.plot(times,show_graph_a1)
-    show_screen=FigureCanvasTkAgg(plot,screen)
-    show_screen.draw()
-    show_screen.get_tk_widget().place(x=500,y=100)
-    
-
-
-        
-graph()
-
 
 def fast_foward():
     faster_music=Button(screen,text=">>",bg="light salmon",command=fast_foward)
