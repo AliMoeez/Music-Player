@@ -8,6 +8,7 @@
 
 from tkinter import *
 from pygame import mixer
+import random
 import wave
 import numpy as np
 import matplotlib.pyplot as plt
@@ -24,23 +25,16 @@ screen.config(bg="light salmon")
 title=Label(screen,text="Music Player",bg="light salmon",font=("arial",36)).place(x=250,y=20)
 
 
-sound1="/Users/moeezali/Desktop/Sounds.alarm1.wav"
+sound1=(r"C:\Users\Owner\Desktop\Depths.wav")
+sound2=(r"C:\Users\Owner\Desktop\refresh-mountaineer-main-version-01-53-19379.wav")
 
 Sounds=["--","1",'2','3','4','5','6','7','8','9','10','11','12','13','14']
+
 
 Library=StringVar(screen)
 Library.set(Sounds[0])
 
 Libr=OptionMenu(screen,Library,*Sounds)
-Libr.place(x=325,y=100)
-
-from pygame import mixer
-
-sound1='/Users/moeezali/Desktop/Sounds/alarm1.wav'
-
-mixer.init()
-
-een,Library,*Sounds)
 Libr.place(x=325,y=100)
 
  
@@ -108,15 +102,12 @@ def play():
     
 play()
 
-
 def pause():
     pause_music=Button(screen,text="■",command=pause,bg="light salmon")
     pause_music.place(x=370,y=150)
     
     if Library.get() in Sounds:
-        mixer.music.stop()
-        
-    
+        mixer.music.stop()  
 pause()
 
 def fast_foward():
@@ -152,7 +143,7 @@ def fast_foward():
         
     elif Library.get()==Sounds[9]:
         Library.set(Sounds[10])
-        
+             
     elif Library.get()==Sounds[10]:
         Library.set(Sounds[11])       
          
@@ -165,6 +156,7 @@ def fast_foward():
          
     elif Library.get()==Sounds[13]:
         Library.set(Sounds[14])
+        
         
                     
 fast_foward()
@@ -201,8 +193,8 @@ def slow_down():
         Library.set(Sounds[8])
         
     elif Library.get()==Sounds[10]:
-        Library.set(Sounds[9]) 
-        
+        Library.set(Sounds[9])  
+           
     elif Library.get()==Sounds[11]:
         Library.set(Sounds[10]) 
          
@@ -217,7 +209,7 @@ def slow_down():
         
 
 slow_down()
-
+       
 def skip():
     skip_music=Button(screen,text="(>",bg="light salmon",command=skip)
     skip_music.place(x=340,y=180)
@@ -235,10 +227,10 @@ def skip():
 
 skip()
 
+
     
 
 screen.mainloop()
-
 
 
 #code for the graph
