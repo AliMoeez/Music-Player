@@ -40,15 +40,18 @@ sound1='/Users/moeezali/Desktop/Sounds/alarm1.wav'
 
 mixer.init()
 
+een,Library,*Sounds)
+Libr.place(x=325,y=100)
+
  
 def play():
-
+    
     sound1=(r"C:\Users\Owner\Desktop\Depths.wav") 
     sound2=(r"C:\Users\Owner\Desktop\refresh-mountaineer-main-version-01-53-19379.wav")
     
     show_play=Label(screen,text="Currently Playing " +Library.get(),bg="light salmon")
     show_play.place(x=285,y=220)
-    
+
     soundsz=Button(screen,text="▶",command=play,bg="light salmon")
     soundsz.place(x=315,y=150)
     
@@ -91,14 +94,20 @@ def play():
     times=np.linspace(0,len(show_graph_a1)/frame,num=len(show_graph_a1))
 
     plot=plt.figure(1)
+    plot.set_facecolor((1,0.627,0.478))
 
-    plot_axes=plt.axes()             
+    plot_axes=plt.axes()
+    plt.cla()
+    plt.xticks([])
+    plt.yticks([])
+    plot_axes.set_facecolor((1.0,0.627,0.478))
     plot_graph=plt.plot(times,show_graph_a1)
     show_screen=FigureCanvasTkAgg(plot,screen)
     show_screen.draw()
     show_screen.get_tk_widget().place(x=500,y=100)
     
 play()
+
 
 def pause():
     pause_music=Button(screen,text="■",command=pause,bg="light salmon")
